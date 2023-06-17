@@ -22,8 +22,9 @@ class Work_vacancies(ABC):
         """Удаляет вакансию"""
         pass
 
+
 class Vacancies(Work_vacancies, FileManager):
-    """Основной класс для операций с ваканcиями"""
+    """Основной класс для операций с вакансиями"""
 
     def add_vacancy(self, vacancy) -> None:
         """Добавляет вакансию в файл"""
@@ -37,7 +38,7 @@ class Vacancies(Work_vacancies, FileManager):
     def search(self, query: dict = None) -> list:
         """Выбирает данные из вакансий по критериям"""
         jobs_list = self.read_file(self.filename)
-        if not query:   # Нет критериев поиска, значит возвращаем все
+        if not query:  # Нет критериев поиска, значит возвращаем все
             return jobs_list
 
         new_jobs_list = []
@@ -50,7 +51,7 @@ class Vacancies(Work_vacancies, FileManager):
         """Удаляет вакансию"""
         jobs_list = self.read_file(self.filename)
 
-        if not query:   # Нет критериев удаления
+        if not query:  # Нет критериев удаления
             return
 
         new_jobs_list = []

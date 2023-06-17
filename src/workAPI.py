@@ -29,8 +29,8 @@ class HeadHunterAPI(API):
     def __init__(self, profession, page):
         self.url = urlHH
         self.params = {
-            "text": profession,  #запрос профессии
-            "page": page  #страница
+            "text": profession,     # запрос профессии
+            "page": page            # страница
         }
 
     def get_from_api(self):
@@ -44,8 +44,8 @@ class SuperJobAPI(API):
     def __init__(self, profession, page):
         self.url = urlSJ
         self.params = {
-            "text": profession,  #запрос профессии
-            "page": page  #страница
+            "text": profession,     # запрос профессии
+            "page": page            # страница
         }
 
     def get_from_api(self):
