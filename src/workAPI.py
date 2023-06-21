@@ -26,10 +26,10 @@ class API(ABC):
 class HeadHunterAPI(API):
     """Класс для работы с HeadHunter"""
 
-    def __init__(self, profession, page):
+    def __init__(self, keyword, page=0):
         self.url = urlHH
         self.params = {
-            "text": profession,     # запрос профессии
+            "text": keyword,     # запрос профессии
             "page": page            # страница
         }
 
@@ -41,10 +41,10 @@ class HeadHunterAPI(API):
 class SuperJobAPI(API):
     """Класс для работы с Super Job"""
 
-    def __init__(self, profession, page):
+    def __init__(self, keyword, page=1):
         self.url = urlSJ
         self.params = {
-            "text": profession,     # запрос профессии
+            "text": keyword,     # запрос профессии
             "page": page            # страница
         }
 

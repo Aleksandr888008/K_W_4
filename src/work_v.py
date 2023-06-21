@@ -26,6 +26,19 @@ class Work_vacancies(ABC):
 class Vacancies(Work_vacancies, FileManager):
     """Основной класс для операций с вакансиями"""
 
+    def __init__(self, file):
+        super().__init__()
+        self.file = file
+
+    @property
+    def file(self):
+        return self.__file
+
+    @file.setter
+    def file(self, value):
+        self.__file = value
+        self.create(self.__file)
+
     def add_vacancy(self, vacancy) -> None:
         """Добавляет вакансию в файл"""
 

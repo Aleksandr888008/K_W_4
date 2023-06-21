@@ -5,7 +5,7 @@ class Vacancy:
     __slots__ = ["__title", "__link", "__description", "__salary"]
 
     def __init__(self, title: str, link: str, description: str, salary: float) -> None:
-        """Инициализируем описание вакансии основными характеристками"""
+        """Инициализируем описание вакансии основными характеристиками"""
         self.title = title                  # название
         self.link = link                    # ссылка
         self.description = description      # описание
