@@ -41,7 +41,7 @@ class SuperJobAPI(API):
     def get_vacancies(self, keyword):
         headers = {
             "X-Api-App-Id": "v3.r.137616592.aa33c9bf0b28400429de1f2c8dc68679791e09f9.e72e1f56545343820a961593bb2b906754e9370a"}
-        params = {"text": keyword.lower()}
+        params = {"keyword": keyword.lower()}
         response = requests.get(self.url, headers=headers, params=params)
         data = response.json()
 

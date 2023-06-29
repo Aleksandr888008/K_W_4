@@ -14,8 +14,7 @@ def user_interaction():
     json_worker = JsonHandler()
     sj_api = SuperJobAPI()
     while True:
-        print("Здравствуйте!")
-        platform = input("Выберите платформу с которой хотите получить вакансии:\n"
+        platform = input("Выберите платформу с которой хотите получить вакансии или иное:\n"
                          "1) HeadHunter 2) SuperJob 3) Сортировка с двух платформ 4) Выход: ")
         if platform == '1':
             search_name_hh = input("Введите запрос вакансии: ")
@@ -39,8 +38,7 @@ def user_interaction():
                           f"Зарплата от: {vacancy.salary}\n"
                           f"Описание вакансии: {vacancy.description}"
                           )
-                else:
-                    return
+
         elif platform == '2':
             search_name_sj = input("Введите запрос вакансии: ")
             data_sj = sj_api.get_vacancies(search_name_sj)
@@ -63,14 +61,12 @@ def user_interaction():
                           f"Зарплата от: {vacancy.salary}\n"
                           f"Описание вакансии: {vacancy.description}"
                           )
-                else:
-                    return
+
         elif platform == '3':
             search = input("Введите запрос вакансии: ")
             data_hh = hh_api.get_vacancies(search)
-            json_worker.add_vacancy(data_hh)
             data_sj = sj_api.get_vacancies(search)
-            json_worker.add_vacancy(data_sj)
+            json_worker.add_vacancy(data_hh + data_sj)
             data = json_worker.get_vacancy(search)
             if not data:
                 print("Такой вакансии нет")
@@ -90,8 +86,6 @@ def user_interaction():
                           f"Зарплата от: {vacancy.salary}\n"
                           f"Описание вакансии: {vacancy.description}"
                           )
-                else:
-                    return
 
         elif platform == '4':
             json_worker.clear_file()
