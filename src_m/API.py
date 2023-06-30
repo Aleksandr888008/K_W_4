@@ -49,7 +49,10 @@ class SuperJobAPI(API):
         for i in data.get('objects', []):
             title = i.get('profession', ' ')
             link = i.get('link', '')
-            salary = i.get('payment_from', 'payment_to')
-            description = i.get('description')
+            salary = {
+                'from': i.get('payment_from'),
+                'to': i.get('payment_to')
+            }
+            description = i.get('candidat')
             vacancies_data.append({'title': title, 'link': link, 'salary': salary, 'description': description})
         return vacancies_data

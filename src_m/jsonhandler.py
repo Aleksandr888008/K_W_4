@@ -9,7 +9,7 @@ class JsonHandler:
     def add_vacancy(self, vacancy_data):
         """Дописываем в файл"""
         with open(self.file_path, 'w', encoding="utf-8") as file:
-            json_f = json.dumps(vacancy_data, ensure_ascii=False)
+            json_f = json.dumps(vacancy_data, indent=4, ensure_ascii=False)
             file.write(json_f)
 
     def get_vacancy(self, criteria):

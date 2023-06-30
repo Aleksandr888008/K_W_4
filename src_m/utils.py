@@ -66,12 +66,13 @@ def user_interaction():
             search = input("Введите запрос вакансии: ")
             data_hh = hh_api.get_vacancies(search)
             data_sj = sj_api.get_vacancies(search)
-            json_worker.add_vacancy(data_hh + data_sj)
-            data = json_worker.get_vacancy(search)
-            if not data:
+            joined_data = data_hh + data_sj
+            json_worker.add_vacancy(joined_data)
+
+            if not joined_data:
                 print("Такой вакансии нет")
             else:
-                filtered_data = [item for item in data if item.get('salary') is not None]
+                filtered_data = [item for item in joined_data if item.get('salary') is not None]
                 top_n = int(input("Введите количество вакансий для вывода: "))
                 list_vacancies = []
                 for item in filtered_data:
