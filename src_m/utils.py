@@ -23,21 +23,8 @@ def user_interaction():
             if not data_hh:
                 print("Такой вакансии нет")
             else:
-                filtered_data_hh = [item for item in data_hh if item.get('salary') is not None]
                 top_n = int(input("Введите количество вакансий для вывода: "))
-                list_vacancies = []
-                for item in filtered_data_hh:
-                    vacancy = Vacancy(item['title'], item['link'], item['salary'], item['description'])
-                    list_vacancies.append(vacancy)
-                sorted_data = sorted(list_vacancies, reverse=True)
-                top_n_data = sorted_data[:top_n]
-                for vacancy in top_n_data:
-                    print(f" \n"
-                          f"Название: {vacancy.title}\n"
-                          f"Ссылка на вакансию: {vacancy.url}\n"
-                          f"Зарплата от: {vacancy.salary}\n"
-                          f"Описание вакансии: {vacancy.description}"
-                          )
+                vacancies_output(data_hh, top_n)
 
         elif platform == '2':
             search_name_sj = input("Введите запрос вакансии: ")
@@ -46,21 +33,8 @@ def user_interaction():
             if not data_sj:
                 print("Такой вакансии нет")
             else:
-                filtered_data_sj = [item for item in data_sj if item.get('salary') is not None]
                 top_n = int(input("Введите количество вакансий для вывода: "))
-                list_vacancies = []
-                for item in filtered_data_sj:
-                    vacancy = Vacancy(item['title'], item['link'], item['salary'], item['description'])
-                    list_vacancies.append(vacancy)
-                sorted_data = sorted(list_vacancies, reverse=True)
-                top_n_data = sorted_data[:top_n]
-                for vacancy in top_n_data:
-                    print(f" \n"
-                          f"Название: {vacancy.title}\n"
-                          f"Ссылка на вакансию: {vacancy.url}\n"
-                          f"Зарплата от: {vacancy.salary}\n"
-                          f"Описание вакансии: {vacancy.description}"
-                          )
+                vacancies_output(data_sj, top_n)
 
         elif platform == '3':
             search = input("Введите запрос вакансии: ")
@@ -72,21 +46,8 @@ def user_interaction():
             if not joined_data:
                 print("Такой вакансии нет")
             else:
-                filtered_data = [item for item in joined_data if item.get('salary') is not None]
                 top_n = int(input("Введите количество вакансий для вывода: "))
-                list_vacancies = []
-                for item in filtered_data:
-                    vacancy = Vacancy(item['title'], item['link'], item['salary'], item['description'])
-                    list_vacancies.append(vacancy)
-                sorted_data = sorted(list_vacancies, reverse=True)
-                top_n_data = sorted_data[:top_n]
-                for vacancy in top_n_data:
-                    print(f" \n"
-                          f"Название: {vacancy.title}\n"
-                          f"Ссылка на вакансию: {vacancy.url}\n"
-                          f"Зарплата от: {vacancy.salary}\n"
-                          f"Описание вакансии: {vacancy.description}"
-                          )
+                vacancies_output(joined_data, top_n)
 
         elif platform == '4':
             json_worker.clear_file()
@@ -94,3 +55,20 @@ def user_interaction():
             break
         else:
             print('НЕ ВЕРНЫЙ ЗАПРОС')
+
+
+def vacancies_output(data, top_n):
+    filtered_data = [item for item in data if item.get('salary') is not None]
+    list_vacancies = []
+    for item in filtered_data:
+        vacancy = Vacancy(item['title'], item['link'], item['salary'], item['description'])
+        list_vacancies.append(vacancy)
+    sorted_data = sorted(list_vacancies, reverse=True)
+    top_n_data = sorted_data[:top_n]
+    for vacancy in top_n_data:
+        print(f" \n"
+              f"Название: {vacancy.title}\n"
+              f"Ссылка на вакансию: {vacancy.url}\n"
+              f"Зарплата от: {vacancy.salary}\n"
+              f"Описание вакансии: {vacancy.description}"
+              )
